@@ -1,14 +1,22 @@
 'use strict';
+function isEnoughCapacity(products, containerSize) {
+  let totalProd = 0;
+  const productsValue = Object.values(products);
 
-function slugify(title) {
-  let rowLower = title.toLowerCase();
-  let wordsRow = rowLower.split(' ');
-  let slug = wordsRow.join('-');
+  for (const product of productsValue) {
+    totalProd += product;
 
-  return slug;
+    if (totalProd < containerSize) {
+      return 'true';
+    }
+    return 'false';
+  }
 }
 
-console.log(slugify('Arrays for begginers')); // "arrays-for-begginers"
-console.log(slugify('English for developer')); // "english-for-developer"
-console.log(slugify('Ten secrets of JavaScript')); // "ten-secrets-of-javascript"
-console.log(slugify('How to become a JUNIOR developer in TWO WEEKS')); // "how-to-become-a-junior-developer-in-two-weeks"
+console.log(isEnoughCapacity({ apples: 2, grapes: 3, carrots: 1 }, 8)); // true
+
+console.log(isEnoughCapacity({ apples: 4, grapes: 6, lime: 16 }, 12)); // false
+
+console.log(isEnoughCapacity({ apples: 1, lime: 5, tomatos: 3 }, 14)); // true
+
+console.log(isEnoughCapacity({ apples: 18, potatos: 5, oranges: 2 }, 7)); // false
