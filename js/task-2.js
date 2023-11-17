@@ -11,17 +11,12 @@
 //   }
 // }
 function calcAverageCalories(days) {
-  const caloriesOfDay = [];
-  for (const day of days) {
-    caloriesOfDay.push(day.calories);
-  }
-  let totalCalories = 0;
-  for (const cal of caloriesOfDay) {
-    totalCalories += cal;
-  }
-
   if (days.length == 0) {
     return 0;
+  }
+  let totalCalories = 0;
+  for (let cal of days) {
+    totalCalories += cal.calories;
   }
   return totalCalories / days.length;
 }
